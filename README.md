@@ -134,6 +134,15 @@ Finally, explicitly request saving or exporting to your chosen local destination
 
 Use the command reference and tool schemas supplied with your installed version. Where available, **Help > Open MCP Files Folder** opens the installed helper documents.
 
+## Feedback and bug reports
+
+Encountered a problem or need a capability? Please [open a GitHub issue](https://github.com/marcemile/iconvectors-mcp/issues/new) and include:
+
+- Your MCP client and IconVectors version.
+- The task you attempted and steps to reproduce it.
+- What happened and what you expected.
+- Any relevant error message, with private paths or data removed.
+
 ## Troubleshooting
 
 If the server is missing, check the client configuration location and executable path. If tools appear but calls fail, check that IconVectors is running and the ports match. Restart or reload the client connection when it has not picked up a configuration change.
