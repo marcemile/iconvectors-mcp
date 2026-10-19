@@ -1,0 +1,5 @@
+# Preserve verified example asset bytes across platform checkouts.
+source/*.svg -text
+result/*.svg -text
+licenses/*.txt -text
+png/*.png -text
