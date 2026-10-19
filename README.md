@@ -124,6 +124,14 @@ and show a preview. Do not save yet.
 
 Finally, explicitly request saving or exporting to your chosen local destination. Reinspect object targets after structural changes. Use a history transaction only for compatible document edits, with the transaction identifier returned by the tool.
 
+## Claude Desktop + IconVectors MCP walkthrough
+
+[Watch the verified 40-second walkthrough](docs/media/claude-desktop-iconvectors-walkthrough.mp4) or read the [setup, workflow and verified example files](docs/claude-desktop-walkthrough.md).
+
+On Windows, Claude Desktop and the official IconVectors MCPB 2.10.0 bundle were used with IconVectors 2.10 to open/preview a disposable SVG, change its stroke, and export transparent 16/24/32px PNGs. This is a completed-run walkthrough, not uninterrupted live execution: the run included timeout recovery and corrected export sizing.
+
+For pixel exports, use `size: { mode: "pixels", widthPx: 16, heightPx: 16, keepAspectRatio: false }`, with matching width/height values of 24 and 32 for the other outputs. The [example guide](docs/claude-desktop-walkthrough.md) explains new output paths, observed 16px limitations and [third-party attribution](examples/claude-desktop-walkthrough/NOTICE.md).
+
 ## Documentation
 
 - [Official MCP integration guide](https://iconvectors.io/help/mcp-integration.html)
