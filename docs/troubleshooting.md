@@ -8,9 +8,9 @@ Open IconVectors normally and leave it running before connecting. Let the MCP cl
 
 ## The client cannot connect
 
-Check the executable path, confirm the application is responsive, and match the configured `--port` to the application port. The documented default is `61337`. The client connection is stdio; do not put the application port into an HTTP MCP `url` field.
+Check the executable path and confirm the application is responsive with `app_ping`. The documented requested port is `61337`; match a custom application port when configured. In 2.10 and later, the application can fall back to an OS-assigned loopback port if its requested port is occupied, and the matching companion can discover it. Follow the [official endpoint guidance](https://iconvectors.io/help/mcp-integration.html) before changing a port. The client connection is stdio; do not put the application port into an HTTP MCP `url` field.
 
-If several application instances are open, inspect application information to identify the one receiving calls. The connection selects the instance owning the configured port. Configure distinct ports for separate instances; there is no separate MCP instance selector.
+If several application instances are open, inspect `app_getInfo` to identify the one receiving calls. Current versions prefer the configured-port owner and can select a unique matching fallback; ambiguous fallbacks are rejected. There is no separate MCP instance selector. Reconnect the companion after an application restart.
 
 Use the client's MCP diagnostics. Increasing a client startup timeout does not resolve a wrong path, a stopped editor or a mismatched port.
 
@@ -44,7 +44,7 @@ After editing configuration, inspect the client server list. If changes have not
 
 ## MCP tools are not visible
 
-Check that the server is enabled and actually started. In VS Code, use Copilot Chat's Agent mode and tool picker. Check any client tool filters. If the client reports too many enabled tools, select a task-specific subset while retaining state discovery tools. These filters belong to the client; IconVectors 2.00 does not provide server-side tool profiles.
+Check that the server is enabled and actually started. In VS Code, use Copilot Chat's Agent mode and tool picker. Check any client tool filters. If the client reports too many enabled tools, select a task-specific subset while retaining state discovery tools. These filters belong to the client; inspect the connected tool catalog for the installed IconVectors version.
 
 Discover tools from the running server. Do not use an old copied tool list to infer what the installed version supports.
 

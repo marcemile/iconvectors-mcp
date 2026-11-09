@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Run Copilot CLI on the same Windows machine as IconVectors 2.0. Keep IconVectors open and confirm `IconVectorsMcp.exe` exists.
+Run Copilot CLI on the same Windows machine as your installed IconVectors version. Keep IconVectors open and confirm its matching `IconVectorsMcp.exe` exists.
 
 ## Configuration
 

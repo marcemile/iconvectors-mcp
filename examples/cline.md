@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Run the Cline extension or CLI locally on Windows. Open IconVectors 2.0 and confirm `IconVectorsMcp.exe` exists.
+Run the Cline extension or CLI locally on Windows. Open your installed IconVectors version and confirm its matching `IconVectorsMcp.exe` exists.
 
 ## Configuration
 

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Use Cursor locally on Windows with IconVectors 2.0 open. Confirm that `IconVectorsMcp.exe` exists in the installation directory.
+Use Cursor locally on Windows with your installed IconVectors version open. Confirm that its matching `IconVectorsMcp.exe` exists in the installation directory.
 
 ## Configuration
 

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Use Kiro locally on Windows with IconVectors 2.0 running and `IconVectorsMcp.exe` present in its installation directory.
+Use Kiro locally on Windows with your installed IconVectors version running and its matching `IconVectorsMcp.exe` present in the installation directory.
 
 ## Configuration
 

@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Axialis IconVectors 2.0 exposes SVG editing capabilities through the Model Context Protocol (MCP). Compatible AI coding agents can inspect and operate the running desktop application and its SVG documents.
+Axialis IconVectors lets a local MCP-capable coding client inspect the open SVG in the running desktop editor, make requested edits, preview the result, and export it. The client operates the actual IconVectors document through the supplied MCP companion.
 
 IconVectors is proprietary software, installed separately. This documentation repository is named `iconvectors-mcp`.
 
@@ -27,7 +27,7 @@ This diagram describes the user workflow only.
 
 ## Supported AI coding agents
 
-The official IconVectors documentation provides Windows setup instructions for all eight clients below. Each guide includes the configuration location, a minimal example and connection checks.
+The official IconVectors documentation provides Windows setup instructions for all eight clients below. These short examples include a link to each maintained official guide, plus the configuration location and connection checks.
 
 | Client | Configuration guide |
 | --- | --- |
@@ -65,10 +65,11 @@ Style setters also update application drawing defaults. For an edit confined to 
 
 ## Requirements
 
-- An installed, running copy of IconVectors 2.0 with its matching MCP executable.
+- An installed, running copy of IconVectors with its matching MCP executable.
 - A local MCP client able to launch a stdio process on the same machine.
 - Permission to use the client and its MCP integration; organization policy may restrict this.
 - The correct executable path and application port.
+- An active IconVectors trial or license for saving and exporting. The [30-day trial](https://iconvectors.io/help/licensing.html) is fully functional; after it expires, saving and exporting require activation.
 
 See the [official download page](https://iconvectors.io/download.html) for current Windows, macOS and Linux releases and requirements. The configuration examples in this repository cover **native Windows** integration.
 
@@ -81,8 +82,22 @@ For native Windows:
 3. Confirm that `IconVectorsMcp.exe` exists in the installation directory.
 4. Add the server using the guide for your client.
 5. Let the client start the MCP process. It should discover tools from that process.
-6. Ask the agent to call `app_ping`, `app_getInfo`, `app_getCapabilities` and `app_get_workspace`.
+6. Run the read-only first test below.
 7. Check that the application, workspace and document are the intended targets before requesting an edit.
+
+### First test: inspect an open SVG
+
+Open an SVG in IconVectors' Editor yourself, then ask your client:
+
+```text
+Use IconVectors MCP to call app_ping, app_getInfo, app_getCapabilities,
+and app_get_workspace. Confirm this is the intended Editor document.
+Then call document_getInfo, selection_get, and document_getSvg to report
+the canvas size, selected elements, and SVG structure. Do not change,
+save, export, or create any files.
+```
+
+If no Editor document is open, stop after the state checks and open one in IconVectors. The tool catalog and application capabilities vary by installed version; inspect the connected tools before requesting an edit.
 
 ## Client configuration
 
@@ -98,7 +113,7 @@ The examples explicitly pass the documented default application port:
 ["--port", "61337"]
 ```
 
-Replace the executable path if your installation differs. If the application's `Options/McpPort` setting has changed, use the same port in the client configuration. Preserve existing server entries when adding IconVectors.
+Replace the executable path if your installation differs. If the application's `Options/McpPort` setting has changed, use the same requested port in the client configuration. In 2.10 and later, the matching companion can discover an automatic loopback fallback when the requested port is occupied; see the [official connection guide](https://iconvectors.io/help/mcp-integration.html). Preserve existing server entries when adding IconVectors.
 
 No custom host argument is needed for this local default setup.
 
@@ -106,12 +121,7 @@ Use the client-specific file format: Codex uses TOML, VS Code uses a `servers` J
 
 ## Example workflow
 
-Begin with a read-only request:
-
-```text
-Use IconVectors MCP to check the connection and report the application
-version, active workspace, current document and selection. Do not edit yet.
-```
+Begin with the [read-only first test](#first-test-inspect-an-open-svg).
 
 After reviewing the result, request a bounded change:
 
@@ -153,7 +163,7 @@ Encountered a problem or need a capability? Please [open a GitHub issue](https:/
 
 ## Troubleshooting
 
-If the server is missing, check the client configuration location and executable path. If tools appear but calls fail, check that IconVectors is running and the ports match. Restart or reload the client connection when it has not picked up a configuration change.
+If the server is missing, check the client configuration location and executable path. If tools appear but `app_ping` fails, check that IconVectors is running and compare the requested port with the application's actual endpoint using the [official connection guide](https://iconvectors.io/help/mcp-integration.html). Restart or reload the client connection when it has not picked up a configuration change.
 
 A client running in a cloud environment, container or WSL does not automatically share the desktop application's local connection or filesystem. This repository documents local stdio integration, without a remote HTTP service.
 

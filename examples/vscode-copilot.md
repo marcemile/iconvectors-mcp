@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Use local VS Code on Windows with GitHub Copilot access and IconVectors 2.0 running. Organizational MCP policy may restrict access. Confirm `IconVectorsMcp.exe` exists.
+Use local VS Code on Windows with GitHub Copilot access and your installed IconVectors version running. Organizational MCP policy may restrict access. Confirm its matching `IconVectorsMcp.exe` exists.
 
 ## Configuration
 

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Use Claude Code locally on Windows. Start IconVectors 2.0 normally and confirm `IconVectorsMcp.exe` exists in its installation directory.
+Use Claude Code locally on Windows. Start your installed IconVectors version normally and confirm its matching `IconVectorsMcp.exe` exists in the installation directory.
 
 ## Configuration
 

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Use local Codex on Windows with IconVectors 2.0 already running. Confirm that the installed `IconVectorsMcp.exe` exists. This setup uses stdio; Codex launches the process.
+Use local Codex on Windows with your installed IconVectors version already running. Confirm that its matching `IconVectorsMcp.exe` exists. This setup uses stdio; Codex launches the process.
 
 ## Configuration
 
